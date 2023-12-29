@@ -15,6 +15,8 @@ public class CharmManager : MonoBehaviour
     int currentTertiaryPiece;
     */
 
+    public GameObject[] infoText;
+
     public Sprite[] primaryPieces;
     public Sprite[] secondaryPieces;
     public Sprite[] tertiaryPieces;
@@ -35,32 +37,69 @@ public class CharmManager : MonoBehaviour
         primarySprite = primaryCharm.GetComponent<SpriteRenderer>();
         secondarySprite = secondaryCharm.GetComponent<SpriteRenderer>();
         tertiarySprite = tertiaryCharm.GetComponent<SpriteRenderer>();
+
+        for (int i = 0; i < infoText.Length; i++)
+        {
+            infoText[i].SetActive(false);
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
+        
+
         Debug.Log(currentCharmId);
 
         if (currentCharmId == 1)
         {
             primarySprite.sprite = primaryPieces[0];
+
+            infoText[0].SetActive(true);
+            infoText[1].SetActive(false);
+            infoText[2].SetActive(false);
+            infoText[3].SetActive(false);
+            infoText[4].SetActive(false);
         }  
         else if (currentCharmId == 2)
         {
             primarySprite.sprite = primaryPieces[1];
+
+            infoText[1].SetActive(true);
+            infoText[0].SetActive(false);
+            infoText[2].SetActive(false);
+            infoText[3].SetActive(false);
+            infoText[4].SetActive(false);
         }
         else if (currentCharmId == 3)
         {
             primarySprite.sprite = primaryPieces[2];
+
+            infoText[2].SetActive(true);
+            infoText[0].SetActive(false);
+            infoText[1].SetActive(false);
+            infoText[3].SetActive(false);
+            infoText[4].SetActive(false);
         } 
         else if (currentCharmId == 4)
         {
             primarySprite.sprite= primaryPieces[3];
+
+            infoText[3].SetActive(true);
+            infoText[0].SetActive(false);
+            infoText[1].SetActive(false);
+            infoText[2].SetActive(false);
+            infoText[4].SetActive(false);
         }
         else if (currentCharmId == 5)
         {
             primarySprite.sprite = primaryPieces[4];
+
+            infoText[4].SetActive(true);
+            infoText[0].SetActive(false);
+            infoText[1].SetActive(false);
+            infoText[2].SetActive(false);
+            infoText[3].SetActive(false);
         }
         //Secondary Sprites
         else if (currentCharmId == 6)
