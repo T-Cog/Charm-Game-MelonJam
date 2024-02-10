@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
 
     bool trigger1 = false;
     bool trigger2 = false;
+    bool trigger3 = false;
 
     void Start()
     {
@@ -26,27 +27,60 @@ public class GameManager : MonoBehaviour
     
     void Update()
     {
-        if (charmManager.GetComponent<CharmManager>().primeCharmId == 1 && 
-            finishCharmButton.GetComponent<TransitionCounter>().finishedCharms == 1 &&
+        //Intro Check
+        if (finishCharmButton.GetComponent<TransitionCounter>().finishedCharms == 1 && 
             trigger1 == false) 
         {
-
-            dialogueTriggers[2].gameObject.SetActive(true);
-            Debug.Log("Good Trigger");
+            Debug.Log("Racoon intro Triggered");
+            dialogueTriggers[1].gameObject.SetActive(true);
 
             finishDialogueButton.SetActive(false);
             trigger1 = true;
-        } 
-        else if (charmManager.GetComponent<CharmManager>().primeCharmId != 1 &&
-            finishCharmButton.GetComponent<TransitionCounter>().finishedCharms == 1 &&
-            trigger1 == false)
+        }  
+        
+
+        //Racoon Check
+        if (finishCharmButton.GetComponent<TransitionCounter>().finishedCharms == 2 && 
+            charmManager.GetComponent<CharmManager>().primeCharmId == 4 && 
+            trigger2 == false)
         {
-            dialogueTriggers[3].gameObject.SetActive(true);
-            Debug.Log("Bad Trigger");
+            Debug.Log("Racoon Good Triggered");
+            dialogueTriggers[2].gameObject.SetActive(true);
 
             finishDialogueButton.SetActive(false);
-            trigger1 = true;
+            trigger2 = true;
+        }
+        else if (finishCharmButton.GetComponent<TransitionCounter>().finishedCharms == 2 && 
+            charmManager.GetComponent<CharmManager>().primeCharmId != 4 &&
+            trigger2 == false)
+        {
+            Debug.Log("Racoon Bad Triggered");
+            dialogueTriggers[3].gameObject.SetActive(true);
+
+            finishDialogueButton.SetActive(false);
+            trigger2 = true;
         }
 
+        //Cat Check
+        if (finishCharmButton.GetComponent<TransitionCounter>().finishedCharms == 3 &&
+            charmManager.GetComponent<CharmManager>().primeCharmId == 3 &&
+            trigger3 == false)
+        {
+            Debug.Log("Cat Good Triggered");
+            dialogueTriggers[4].gameObject.SetActive(true);
+
+            finishDialogueButton.SetActive(false);
+            trigger2 = true;
+        }
+        else if (finishCharmButton.GetComponent<TransitionCounter>().finishedCharms == 3 && 
+            charmManager.GetComponent<CharmManager>().primeCharmId != 3 &&
+            trigger3 == false)
+        {
+            Debug.Log("Cat Bad Triggered");
+            dialogueTriggers[5].gameObject.SetActive(true);
+
+            finishDialogueButton.SetActive(false);
+            trigger2 = true;
+        }
     }
 }

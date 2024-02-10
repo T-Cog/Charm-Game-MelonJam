@@ -7,13 +7,17 @@ using UnityEngine.UIElements;
 
 public class DialogueTrigger : MonoBehaviour
 {
+    public GameObject triggerAnchor;
+
     public Message[] messages;
     public Actor[] actors;
+    
 
     public void StartDialogue()
     {
         FindObjectOfType<DialogueManager>().OpenDialogue(messages, actors);
         enabled = false;
+        transform.position = triggerAnchor.transform.position;
     }
 }
 
